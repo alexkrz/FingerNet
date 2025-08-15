@@ -1,2 +1,5 @@
 # IDE
 /.vscode
+
+# ONNX checkpoints
+*.onnx

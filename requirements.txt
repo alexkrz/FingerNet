@@ -7,3 +7,4 @@ scikit-image==0.16.2
 scikit-learn==0.21.3
 opencv-python==3.4.8.29
 nbconvert==7.6.0
+tf2onnx==1.16.*

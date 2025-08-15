@@ -1,3 +1,4 @@
+import os
 from functools import reduce  # In Python 3, reduce() was moved into functools
 
 import numpy as np
@@ -259,6 +260,20 @@ def get_main_net(input_shape=(512, 512, 1), weights_path=None, mode="deploy"):
 # -----------------------------------------------------------------------------------------
 
 
+def convert_model(model, model_dir):
+    import tf2onnx
+
+    # Convert Keras model to ONNX
+    spec = (tf.TensorSpec((None, 512, 512, 1), tf.float32, name="input"),)
+    onnx_model, _ = tf2onnx.convert.from_keras(model, input_signature=spec, opset=13)
+    with open(os.path.join(model_dir, "FingerNet.onnx"), "wb") as f:
+        f.write(onnx_model.SerializeToString())
+
+
 if __name__ == "__main__":
-    model = get_main_net(weights_path="models/released_version/Model.model", mode="deploy")
+    model_dir = "models/released_version"
+
+    model = get_main_net(weights_path=os.path.join(model_dir, "Model.model"), mode="deploy")
     model.summary()
+
+    # convert_model(model, model_dir)

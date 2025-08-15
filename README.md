@@ -47,9 +47,18 @@ If you find FingerNet useful in your research, please consider citing:
 
 ### Requirements: software
 
-0. `Python 2.7`: cv2, numpy, scipy, matplotlib, pydot, graphviz
-0. `Tensorflow 1.0.1`
-0.  `Keras 2.0.2`
+1. `Python 3.7`:
+2. `Tensorflow 1.15.*`
+3. `Keras 2.3.1`
+
+
+### Set up conda environment
+
+```bash
+conda env create -n $YOUR_ENV_NAME -f environment.yml
+conda activate $YOUR_ENV_NAME
+pip install -r requirements.txt
+```
 
 ### Requirements: hardware
 
